@@ -4,7 +4,7 @@ import { Editor, Path } from 'slate';
 import {
   ReactEditor,
   RenderElementProps,
-  useEditor,
+  useSlate,
   useReadOnly,
 } from 'slate-react';
 import { Selectable } from './Selectable';
@@ -33,7 +33,7 @@ export const getSelectableElement = ({
 }: GetSelectabelElementOptions) => {
   return forwardRef(
     ({ attributes, element, ...props }: RenderElementProps, ref) => {
-      const editor = useEditor();
+      const editor = useSlate();
       const readOnly = useReadOnly();
       const path = useMemo(() => ReactEditor.findPath(editor, element), [
         editor,

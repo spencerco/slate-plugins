@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, styled } from '@uifabric/utilities';
 import { Transforms } from 'slate';
-import { ReactEditor, useEditor, useReadOnly } from 'slate-react';
+import { ReactEditor, useSlate, useReadOnly } from 'slate-react';
 import {
   TodoListElementProps,
   TodoListElementStyleProps,
@@ -26,7 +26,7 @@ export const TodoListElementBase = ({
   styles,
   htmlAttributes,
 }: TodoListElementProps) => {
-  const editor = useEditor();
+  const editor = useSlate();
   const readOnly = useReadOnly();
 
   const { checked } = element;

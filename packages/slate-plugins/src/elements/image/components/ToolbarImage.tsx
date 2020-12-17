@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEditor } from 'slate-react';
+import { useSlate } from 'slate-react';
 import {
   ToolbarButton,
   ToolbarButtonProps,
@@ -11,7 +11,7 @@ export const ToolbarImage = ({
   img,
   ...props
 }: ToolbarButtonProps & ImagePluginOptions<'type'>) => {
-  const editor = useEditor();
+  const editor = useSlate();
 
   return (
     <ToolbarButton

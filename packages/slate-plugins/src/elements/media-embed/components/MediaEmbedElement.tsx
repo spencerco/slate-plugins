@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, styled } from '@uifabric/utilities';
 import { Transforms } from 'slate';
-import { ReactEditor, useEditor } from 'slate-react';
+import { ReactEditor, useSlate } from 'slate-react';
 import {
   MediaEmbedElementProps,
   MediaEmbedElementStyleProps,
@@ -32,7 +32,7 @@ export const MediaEmbedElementBase = ({
     // Other style props
   });
 
-  const editor = useEditor();
+  const editor = useSlate();
   const { url } = element;
 
   return (

@@ -14,6 +14,9 @@ import {
 // Data of Element node
 export interface ImageNodeData {
   url: string;
+  mediaId?: string;
+  mimeType?: string;
+  extension?: string;
 }
 // Element node
 export interface ImageNode extends ElementWithAttributes, ImageNodeData {}

@@ -15,6 +15,9 @@ export const deserializeImage = (
       node: (el) => ({
         type: img.type,
         url: el.getAttribute('src'),
+        mediaId: el.getAttribute('data-media-id'),
+        mimeType: el.getAttribute('data-mime-type'),
+        extension: el.getAttribute('data-extension'),
       }),
       rules: [{ nodeNames: 'IMG' }],
       ...options?.img?.deserialize,

@@ -8,7 +8,6 @@ import {
   MediaEmbedElementStyles,
 } from '../types';
 import { getMediaEmbedElementStyles } from './MediaEmbedElement.styles';
-import { MediaEmbedUrlInput } from './MediaEmbedUrlInput';
 
 const getClassNames = classNamesFunction<
   MediaEmbedElementStyleProps,
@@ -47,16 +46,6 @@ export const MediaEmbedElementBase = ({
             {...htmlAttributes}
           />
         </div>
-
-        <MediaEmbedUrlInput
-          data-testid="MediaEmbedUrlInput"
-          className={classNames.input}
-          url={url}
-          onChange={(val: string) => {
-            const path = ReactEditor.findPath(editor, element);
-            Transforms.setNodes(editor, { url: val }, { at: path });
-          }}
-        />
       </div>
       {children}
     </div>

@@ -83,20 +83,10 @@ export const onKeyDownExitBreak = ({
 
         event.preventDefault();
 
-        const selectionPath = Editor.path(editor, editor.selection);
-
-        let insertPath;
-        if (before) {
-          insertPath = selectionPath.slice(0, level + 1);
-        } else {
-          insertPath = Path.next(selectionPath.slice(0, level + 1));
-        }
-
         Transforms.insertNodes(
           editor,
           { type: defaultType, children: [{ text: '' }] },
           {
-            at: insertPath,
             select: !isStart,
           }
         );

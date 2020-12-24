@@ -37,6 +37,8 @@ export interface BalloonToolbarProps extends ToolbarProps {
    * Show an arrow pointing to up or down depending on the direction.
    */
   arrow?: boolean;
+
+  scrollContainer: HTMLElement;
 }
 
 export interface BalloonToolbarStyleProps extends ToolbarStyleProps {

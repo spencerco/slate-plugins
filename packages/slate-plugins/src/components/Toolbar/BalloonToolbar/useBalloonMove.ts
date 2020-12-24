@@ -11,10 +11,12 @@ export const useBalloonMove = ({
   editor,
   ref,
   direction,
+  scrollContainer,
 }: {
   editor: Editor;
   ref: any;
   direction: 'top' | 'bottom';
+  scrollContainer: HTMLElement
 }) => {
   const selectionExpanded = isSelectionExpanded(editor);
   const selectionText = getSelectionText(editor);
@@ -22,6 +24,6 @@ export const useBalloonMove = ({
   useEffect(() => {
     ref.current &&
       selectionExpanded &&
-      setPositionAtSelection(ref.current, direction);
+      setPositionAtSelection(ref.current, scrollContainer, direction);
   }, [direction, selectionText.length, selectionExpanded, ref]);
 };

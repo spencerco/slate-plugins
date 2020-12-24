@@ -15,29 +15,28 @@ export const BalloonToolbar = ({
   direction = 'top',
   theme = 'dark',
   arrow = false,
+  scrollContainer
 }: BalloonToolbarProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const editor = useSlate();
 
   const [hidden] = useBalloonShow({ editor, ref, hiddenDelay });
-  useBalloonMove({ editor, ref, direction });
+  useBalloonMove({ editor, ref, direction, scrollContainer });
 
   return (
-    <PortalBody>
-      <Toolbar
-        ref={ref}
-        styles={getBalloonToolbarStyles(
-          className,
-          styles,
-          theme,
-          hidden,
-          hiddenDelay,
-          direction,
-          arrow
-        )}
-      >
-        {children}
-      </Toolbar>
-    </PortalBody>
+    <Toolbar
+      ref={ref}
+      styles={getBalloonToolbarStyles(
+        className,
+        styles,
+        theme,
+        hidden,
+        hiddenDelay,
+        direction,
+        arrow
+      )}
+    >
+      {children}
+    </Toolbar>
   );
 };

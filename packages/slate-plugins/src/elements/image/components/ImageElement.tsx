@@ -25,7 +25,7 @@ export const ImageElementBase = ({
   styles,
   htmlAttributes,
 }: ImageElementProps) => {
-  const { url, mediaId, extension, mimeType } = element;
+  const { url, mediaId, extension, mimeType, widthPercentage } = element;
   const focused = useFocused();
   const selected = useSelected();
 
@@ -45,7 +45,7 @@ export const ImageElementBase = ({
           src={url}
           data-media-id={mediaId}
           data-extension={extension}
-          data-width-percentage={extension}
+          data-width-percentage={widthPercentage}
           data-mime-type={mimeType}
           alt=""
           {...htmlAttributes}

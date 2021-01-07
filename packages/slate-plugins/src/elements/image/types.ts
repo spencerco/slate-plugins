@@ -17,6 +17,7 @@ export interface ImageNodeData {
   mediaId?: string;
   mimeType?: string;
   extension?: string;
+  widthPercentage?: string;
 }
 // Element node
 export interface ImageNode extends ElementWithAttributes, ImageNodeData {}

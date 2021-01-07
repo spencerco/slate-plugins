@@ -18,6 +18,7 @@ export const deserializeImage = (
         mediaId: el.getAttribute('data-media-id'),
         mimeType: el.getAttribute('data-mime-type'),
         extension: el.getAttribute('data-extension'),
+        widthPercentage: el.getAttribute('style-width-percentage'),
       }),
       rules: [{ nodeNames: 'IMG' }],
       ...options?.img?.deserialize,

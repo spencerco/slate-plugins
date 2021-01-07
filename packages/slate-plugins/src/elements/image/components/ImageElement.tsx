@@ -45,6 +45,7 @@ export const ImageElementBase = ({
           src={url}
           data-media-id={mediaId}
           data-extension={extension}
+          data-width-percentage={extension}
           data-mime-type={mimeType}
           alt=""
           {...htmlAttributes}

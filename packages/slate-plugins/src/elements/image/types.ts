@@ -1,6 +1,6 @@
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { RenderElementProps } from 'slate-react';
+import { IStyle } from "@uifabric/styling";
+import { IStyleFunctionOrObject } from "@uifabric/utilities";
+import { RenderElementProps } from "slate-react";
 import {
   Deserialize,
   ElementWithAttributes,
@@ -9,7 +9,7 @@ import {
   RenderNodeOptions,
   RenderNodePropsOptions,
   RootProps,
-} from '../../common/types/PluginOptions.types';
+} from "../../common/types/PluginOptions.types";
 
 // Data of Element node
 export interface ImageNodeData {
@@ -17,7 +17,7 @@ export interface ImageNodeData {
   mediaId?: string;
   mimeType?: string;
   extension?: string;
-  widthPercentage?: string;
+  widthPercentage?: number;
 }
 // Element node
 export interface ImageNode extends ElementWithAttributes, ImageNodeData {}
@@ -39,7 +39,7 @@ export interface ImageElementProps
   element: ImageNode;
 }
 
-export type ImageKeyOption = 'img';
+export type ImageKeyOption = "img";
 
 // Plugin options
 export type ImagePluginOptionsValues = RenderNodeOptions &
@@ -58,7 +58,7 @@ export interface ImageRenderElementOptions
 
 // deserialize options
 export interface ImageDeserializeOptions
-  extends ImagePluginOptions<'type' | 'rootProps' | 'deserialize'> {}
+  extends ImagePluginOptions<"type" | "rootProps" | "deserialize"> {}
 
 export interface ImageElementStyles {
   /**

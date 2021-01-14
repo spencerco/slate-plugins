@@ -1,3 +1,4 @@
+import { isUrl } from '../../../common';
 import * as React from 'react';
 import { useSlate } from 'slate-react';
 import {
@@ -33,6 +34,12 @@ export const ToolbarLink = ({
           prevUrl = linkNode[0].url as string;
         }
         const url = window.prompt(`Enter the URL of the link:`, prevUrl);
+
+        if(!isUrl(url)) {
+          window.prompt(`"${url}" is not a valid URL.`);
+          return
+        }
+
         if (!url) return;
 
         // If our cursor is in middle of a link, then we don't want to inser it inline

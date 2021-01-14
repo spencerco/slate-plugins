@@ -36,7 +36,7 @@ export const ToolbarLink = ({
         const url = window.prompt(`Enter the URL of the link:`, prevUrl);
 
         if(!isUrl(url)) {
-          window.prompt(`"${url}" is not a valid URL.`);
+          window.alert(`"${url}" is not a valid URL.`);
           return
         }
 

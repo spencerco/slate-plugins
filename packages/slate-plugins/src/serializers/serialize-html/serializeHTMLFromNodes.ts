@@ -105,7 +105,6 @@ const getLeaf = ({
       children: encodeURIComponent(result),
     };
 
-    console.log("getLeaf")
     let html = decodeURIComponent(
       renderToStaticMarkup(
         createElementWithSlate({
@@ -124,10 +123,11 @@ const getLeaf = ({
 };
 
 const isEncoded = (str = '') => {
+  console.log("isEncoded", {str})
   try {
-    console.log("isEncoded")
     return str !== decodeURIComponent(str);
   } catch (error) {
+    console.log("isEncoded ERROR")
     return false;
   }
 };
@@ -194,8 +194,14 @@ export const serializeHTMLFromNodes = ({
     })
     .join('');
 
-  console.log("serializeHTMLFromNodes")
-  result = trimWhitespace(decodeURIComponent(result));
+  try {
+    console.log("try", {result})
+    result = trimWhitespace(decodeURIComponent(result));
+    console.log("try successful", {result})
+  } catch {
+    result = trimWhitespace(result);
+    console.log("catch", {result})
+  }
 
   if (stripDataAttributes) {
     result = stripSlateDataAttributes(result);

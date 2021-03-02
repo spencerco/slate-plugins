@@ -35,6 +35,12 @@ export const ToolbarLink = ({
         }
         const url = window.prompt(`Enter the URL of the link:`, prevUrl);
 
+        try {
+          if(url) decodeURIComponent(url)
+        } catch {
+          window.alert(`"${url}" is not a valid URL. Please check for special characters.`);
+        }
+
         if (!url) return;
 
         // If our cursor is in middle of a link, then we don't want to inser it inline

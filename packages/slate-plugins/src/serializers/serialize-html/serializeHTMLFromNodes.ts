@@ -161,28 +161,31 @@ export const serializeHTMLFromNodes = ({
 }): string => {
   let result = nodes
     .map((node: SlateNode) => {
+    console.log(node?.url, node.text)
       if (SlateText.isText(node)) {
-        console.log("isText", node && node.url)
         return getLeaf({
           plugins,
           leafProps: {
             leaf: node as SlateText,
             text: node as SlateText,
-            children: node.text,
+            children: isEncoded(node.text)
+              ? node.text
+              : encodeURIComponent(node.text),
             attributes: { 'data-slate-leaf': true },
           },
           slateProps,
         });
       }
-      console.log(node && node.url)
       return getNode({
         plugins,
         elementProps: {
           element: node,
-          children: serializeHTMLFromNodes({
-            plugins,
-            nodes: node.children,
-          }),
+          children: encodeURIComponent(
+            serializeHTMLFromNodes({
+              plugins,
+              nodes: node.children,
+            })
+          ),
           attributes: { 'data-slate-node': 'element', ref: null },
         },
         slateProps,

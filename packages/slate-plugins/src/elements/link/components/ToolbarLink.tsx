@@ -38,7 +38,8 @@ export const ToolbarLink = ({
         try {
           if(url) decodeURIComponent(url)
         } catch {
-          window.alert(`"${url}" is not a valid URL. Please check for special characters.`);
+          window.alert(`This is not a valid URL. Please check for special characters.`);
+          return
         }
 
         if (!url) return;

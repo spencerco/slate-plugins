@@ -105,6 +105,7 @@ const getLeaf = ({
       children: encodeURIComponent(result),
     };
 
+    console.log("getLeaf")
     let html = decodeURIComponent(
       renderToStaticMarkup(
         createElementWithSlate({
@@ -124,6 +125,7 @@ const getLeaf = ({
 
 const isEncoded = (str = '') => {
   try {
+    console.log("isEncoded")
     return str !== decodeURIComponent(str);
   } catch (error) {
     return false;
@@ -192,6 +194,7 @@ export const serializeHTMLFromNodes = ({
     })
     .join('');
 
+  console.log("serializeHTMLFromNodes")
   result = trimWhitespace(decodeURIComponent(result));
 
   if (stripDataAttributes) {

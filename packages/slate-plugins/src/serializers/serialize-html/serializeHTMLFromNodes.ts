@@ -162,31 +162,27 @@ export const serializeHTMLFromNodes = ({
   let result = nodes
     .map((node: SlateNode) => {
       if (SlateText.isText(node)) {
-        console.log("isText", {node})
+        console.log("isText", node && node.url)
         return getLeaf({
           plugins,
           leafProps: {
             leaf: node as SlateText,
             text: node as SlateText,
-            children: isEncoded(node.text)
-              ? node.text
-              : encodeURIComponent(node.text),
+            children: node.text,
             attributes: { 'data-slate-leaf': true },
           },
           slateProps,
         });
       }
-      console.log("not Text", {node})
+      console.log(node && node.url)
       return getNode({
         plugins,
         elementProps: {
           element: node,
-          children: encodeURIComponent(
-            serializeHTMLFromNodes({
-              plugins,
-              nodes: node.children,
-            })
-          ),
+          children: serializeHTMLFromNodes({
+            plugins,
+            nodes: node.children,
+          }),
           attributes: { 'data-slate-node': 'element', ref: null },
         },
         slateProps,

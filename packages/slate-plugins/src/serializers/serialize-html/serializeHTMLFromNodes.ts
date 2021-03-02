@@ -123,11 +123,9 @@ const getLeaf = ({
 };
 
 const isEncoded = (str = '') => {
-  console.log("isEncoded", {str})
   try {
     return str !== decodeURIComponent(str);
   } catch (error) {
-    console.log("isEncoded ERROR")
     return false;
   }
 };
@@ -164,6 +162,7 @@ export const serializeHTMLFromNodes = ({
   let result = nodes
     .map((node: SlateNode) => {
       if (SlateText.isText(node)) {
+        console.log("isText", {node})
         return getLeaf({
           plugins,
           leafProps: {
@@ -177,6 +176,7 @@ export const serializeHTMLFromNodes = ({
           slateProps,
         });
       }
+      console.log("not Text", {node})
       return getNode({
         plugins,
         elementProps: {
@@ -195,12 +195,9 @@ export const serializeHTMLFromNodes = ({
     .join('');
 
   try {
-    console.log("try", {result})
     result = trimWhitespace(decodeURIComponent(result));
-    console.log("try successful", {result})
   } catch {
     result = trimWhitespace(result);
-    console.log("catch", {result})
   }
 
   if (stripDataAttributes) {

@@ -37,7 +37,7 @@ export const ToolbarLink = ({
 
         if (!url) return;
 
-        const cleanURL = url.replaceAll("[a-zA-Z0-9 -+&#]", "");
+        const cleanURL = url.replace(/\n|\r/g, "");
 
         try {
           decodeURIComponent(cleanURL)

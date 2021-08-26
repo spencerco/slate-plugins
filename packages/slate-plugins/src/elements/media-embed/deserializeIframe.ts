@@ -15,8 +15,6 @@ export const deserializeIframe = (
       node: (el: HTMLElement) => {
         let url = el.getAttribute('src');
         if (url) {
-          [url] = url.split('?');
-
           return {
             type: media_embed.type,
             url,

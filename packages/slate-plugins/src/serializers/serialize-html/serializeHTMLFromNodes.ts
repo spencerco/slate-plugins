@@ -192,7 +192,11 @@ export const serializeHTMLFromNodes = ({
     })
     .join('');
 
-  result = trimWhitespace(decodeURIComponent(result));
+  try {
+    result = trimWhitespace(decodeURIComponent(result));
+  } catch {
+    result = trimWhitespace(result);
+  }
 
   if (stripDataAttributes) {
     result = stripSlateDataAttributes(result);

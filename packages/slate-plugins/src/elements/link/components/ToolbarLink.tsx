@@ -35,17 +35,21 @@ export const ToolbarLink = ({
         }
         const url = window.prompt(`Enter the URL of the link:`, prevUrl);
 
-        if(!isUrl(url)) {
-          window.alert(`"${url}" is not a valid URL.`);
+        if (!url) return;
+
+        const cleanURL = url.replace(/\n|\r/g, "");
+
+        try {
+          decodeURIComponent(cleanURL)
+        } catch {
+          window.alert(`This is not a valid URL. Please check for special characters.`);
           return
         }
-
-        if (!url) return;
 
         // If our cursor is in middle of a link, then we don't want to inser it inline
         const shouldWrap: boolean =
           linkNode !== undefined && isCollapsed(editor.selection);
-        upsertLinkAtSelection(editor, url, { wrap: shouldWrap, ...options });
+        upsertLinkAtSelection(editor, cleanURL, { wrap: shouldWrap, ...options });
       }}
       {...props}
     />

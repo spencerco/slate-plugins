@@ -123,15 +123,13 @@ export const withList = ({
       const [listItemNode] = listItem;
 
       if (isSelectionAtBlockStart(editor)) {
-        Editor.withoutNormalizing(editor, () => {
-          moved = removeFirstListItem(editor, { list, listItem }, options);
-          if (moved) return;
+        moved = removeFirstListItem(editor, { list, listItem }, options);
+        if (moved) return;
 
-          moved = removeRootListItem(editor, { list, listItem }, options);
-          if (moved) return;
+        moved = removeRootListItem(editor, { list, listItem }, options);
+        if (moved) return;
 
-          moved = moveListItemUp(editor, { list, listItem }, options);
-        });
+        moved = moveListItemUp(editor, { list, listItem }, options);
         if (moved) return;
       }
 
@@ -157,12 +155,8 @@ export const withList = ({
   editor.deleteFragment = () => {
     const { selection } = editor;
 
-    if (selection) {
-      let deleted;
-      Editor.withoutNormalizing(editor, () => {
-        deleted = deleteListFragment(editor, selection, options);
-      });
-      if (deleted) return;
+    if (selection && deleteListFragment(editor, selection, options)) {
+      return;
     }
 
     deleteFragment();

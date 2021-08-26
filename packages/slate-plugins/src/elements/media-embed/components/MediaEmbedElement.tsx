@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { classNamesFunction, styled } from '@uifabric/utilities';
-import { Transforms } from 'slate';
-import { ReactEditor, useSlate } from 'slate-react';
 import {
   MediaEmbedElementProps,
   MediaEmbedElementStyleProps,
@@ -31,8 +29,13 @@ export const MediaEmbedElementBase = ({
     // Other style props
   });
 
-  const editor = useSlate();
-  const { url } = element;
+  const url = React.useMemo(() => {
+    const url = new URL(element.url)
+    url.searchParams.set("title", "0")
+    url.searchParams.set("byline", "0")
+    url.searchParams.set("portrait", "0")
+    return url.toString()
+  }, [element.url])
 
   return (
     <div {...attributes} className={classNames.root}>
@@ -41,7 +44,7 @@ export const MediaEmbedElementBase = ({
           <iframe
             className={classNames.iframe}
             title="embed"
-            src={`${url}?title=0&byline=0&portrait=0`}
+            src={url}
             frameBorder="0"
             {...htmlAttributes}
           />

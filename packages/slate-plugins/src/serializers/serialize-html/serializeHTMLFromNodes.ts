@@ -93,6 +93,7 @@ const getLeaf = ({
   const { children } = leafProps;
 
   return plugins.reduce((result, plugin) => {
+    console.log("SLATE",{result, plugin})
     if (!plugin.serialize?.leaf && !plugin.renderLeaf) return result;
     if (
       (plugin.serialize?.leaf?.(leafProps) ??
